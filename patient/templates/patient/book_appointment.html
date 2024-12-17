@@ -1,0 +1,25 @@
+{% extends "patient/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Book Appointment</h2>
+    <form method="post" class="mt-4" action="{% url 'patient:book_appointment' %}">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Book Appointment</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "admin_panel/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Add Facility</h2>
+
+    <!-- Add Facility Form -->
+    <form method="post" class="mt-5">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields -->
+        <button type="submit" class="btn btn-primary">Add Facility</button>
+    </form>
+
+    <!-- Display Existing Facilities -->
+    <h3 class="mt-5">Existing Facilities</h3>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Contact Number</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for facility in facilities %}
+                <tr>
+                    <td>{{ facility.name }}</td>
+                    <td>{{ facility.location }}</td>
+                    <td>{{ facility.phone_number }}</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

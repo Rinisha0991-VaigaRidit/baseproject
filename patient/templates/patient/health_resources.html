@@ -1,0 +1,23 @@
+{% extends "patient/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Health Resources</h2>
+    <div class="mt-4">
+        {% if health_resources %}
+    {% for resource in health_resources %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ resource.title }}</h5>
+            <p class="card-text">{{ resource.description }}</p>
+            <a href="{{ resource.link }}" target="_blank" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No health resources available.</p>
+{% endif %}
+
+    </div>
+</div>
+{% endblock %}

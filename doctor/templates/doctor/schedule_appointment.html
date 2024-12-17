@@ -1,0 +1,39 @@
+{% extends "doctor/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Schedule Appointments</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Render the form fields -->
+
+        <button type="submit" class="btn btn-primary">Save Appointment</button>
+    </form>
+
+    <h3 class="mt-5">Upcoming Appointments</h3>
+    {% if schedules %}
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in schedules %}
+            <tr>
+                <td>{{ appointment.patient.username }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No upcoming appointments.</p>
+    {% endif %}
+</div>
+{% endblock %}

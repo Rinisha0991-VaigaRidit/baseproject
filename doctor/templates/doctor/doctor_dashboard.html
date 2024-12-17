@@ -1,0 +1,23 @@
+{% extends "doctor/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Welcome, Dr. {{ user.username }}</h2>
+    <p class="lead">Your health is our priority.</p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <a href="{% url 'doctor:schedule_appointment' %}" class="btn btn-primary btn-block">Schedule Appointments</a>
+        </div>
+
+        <div class="col-md-4">
+            {% for appointment in appointments %}
+    <p>{{ appointment.id }}</p>
+    {% if appointment.id %}
+        <a href="{% url 'doctor:prescribe_medication' appointment.id %}">Prescribe Medication</a>
+    {% endif %}
+{% endfor %}
+
+      </div>
+    </div>
+</div>
+{% endblock %}

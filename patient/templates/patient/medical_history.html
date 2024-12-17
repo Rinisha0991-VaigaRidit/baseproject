@@ -1,0 +1,27 @@
+{% extends "patient/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Medical History</h2>
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th>Appointment Date</th>
+                <th>Doctor</th>
+                <th>Diagnosis</th>
+                <th>Prescriptions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for history in medical_history %}
+            <tr>
+                <td>{{ history.appointment.date }}</td>
+                <td>{{ history.appointment.doctor.user.username }}</td>
+                <td>{{ history.diagnosis }}</td>
+                <td>{{ history.prescription }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "patient/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Welcome, {{ user.username }}</h2>
+    <p class="lead">Your health is our priority.</p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <a href="{% url 'patient:book_appointment' %}" class="btn btn-success btn-block">Book Appointment</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'patient:medical_history' %}" class="btn btn-info btn-block">Medical History</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'patient:billing_payments' %}" class="btn btn-warning btn-block">Billing & Payments</a>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4">
+            <a href="{% url 'patient:health_resources' %}" class="btn btn-secondary btn-block">Health Resources</a>
+        </div>
+    </div>
+    <nav>
+        <!-- Link to the Admin Panel -->
+        <a href="/admin_panel/">Go to Admin Panel</a>
+
+        <!-- Link to the Doctor Module -->
+        <a href="/doctor/">Go to Doctor Module</a>
+    </nav>
+</div>
+{% endblock %}

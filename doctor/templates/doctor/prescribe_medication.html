@@ -1,0 +1,33 @@
+{% extends "doctor/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Prescribe Medication</h2>
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save Prescription</button>
+    </form>
+    <h3 class="mt-5">Prescription History</h3>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Diagnosis</th>
+                <th>Medications</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prescription in prescriptions %}
+            <tr>
+                <td>{{ prescription.patient.user.username }}</td>
+                <td>{{ prescription.diagnosis }}</td>
+                <td>{{ prescription.medication }}</td>
+                <td>{{ prescription.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

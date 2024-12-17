@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged Out</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Include CSS if necessary -->
+</head>
+<body>
+    <div class="logout-container">
+        <h1>You have been successfully logged out.</h1>
+        <p>Thank you for visiting our e-Hospitality platform.</p>
+        <a href="{% url 'login' %}">Login Again</a> <!-- Adjust 'login' if your login view has a different name -->
+    </div>
+</body>
+</html>

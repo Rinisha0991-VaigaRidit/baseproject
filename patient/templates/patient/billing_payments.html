@@ -1,0 +1,33 @@
+{% extends "patient/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Billing & Payments</h2>
+   {% if billing_records %}
+    <h2>Your Billing Records</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Appointment</th>
+                <th>Amount</th>
+                <th>Paid</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in billing_records %}
+                <tr>
+                    <td>{{ record.date }}</td>
+                    <td>{{ record.appointment }}</td>
+                    <td>{{ record.amount }}</td>
+                    <td>{{ record.paid|yesno:"Yes,No" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No billing records found.</p>
+{% endif %}
+
+</div>
+{% endblock %}
